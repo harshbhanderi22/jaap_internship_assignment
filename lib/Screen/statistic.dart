@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jaap_internship_assignment/Widget/expense_card.dart';
 import 'package:jaap_internship_assignment/constant.dart';
 import 'package:slide_switcher/slide_switcher.dart';
 
@@ -29,8 +30,6 @@ class _StatisticState extends State<Statistic> {
   @override
   Widget build(BuildContext context) {
 
-    int tabindex = 0;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -49,26 +48,25 @@ class _StatisticState extends State<Statistic> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         color: Colors.white,
         child: Column(
            children: [
             SlideSwitcher(
               containerColor: Colors.white,
-               slidersColors: [
+               slidersColors: const [
                     Color(0xFF558683)
                ],
                containerBorderRadius: 5,
-               children: tabs,
                onSelect: (index) {
                 setState(() {
-                  tabindex = index;
                 });
                },
                containerHeight: 40,
                containerWight: 350,
+               children: tabs,
              ),
-            SizedBox(height: 5,),
+            const SizedBox(height: 5,),
             Row(
               children: [
                 const Spacer(),
@@ -90,48 +88,40 @@ class _StatisticState extends State<Statistic> {
               ],
             ),
             Container(),
-            Container(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const[
-                      Text('Top Expenses', style: kTopTreading,),
-                      Icon(Icons.sort)
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children:  [
-                        Row(
-                           children: [
-                            CircleAvatar(
-                              backgroundImage: AssetImage('assests/image/starbuck.png'),
-                            ),
-                            SizedBox(width: 10,),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('StarBucks', style: kTreadingHeading,),
-                                SizedBox(height: 5,),
-                                Text('12 Jan, 2022',style: kTreadingDate,)
-                              ],
-                            ),
-                          ],
-                        ),
-                        Center(
-                          child: Text(
-                            '-1200',
-                            style: kTreadingExpense
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const[
+                    Text('Top Expenses', style: kTopTreading,),
+                    Icon(Icons.sort)
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10),
+                   child: Column(
+                     children: [
+                       TrendingExpense(
+                           heading: 'Starbuck',
+                           date: '12 Jan, 2022',
+                           expense: 1200),
+                       TrendingExpense(
+                           heading: 'Starbuck',
+                           date: '12 Jan, 2022',
+                           expense: 1200),
+                       TrendingExpense(
+                           heading: 'Starbuck',
+                           date: '12 Jan, 2022',
+                           expense: 1200),
+                       TrendingExpense(
+                           heading: 'Starbuck',
+                           date: '12 Jan, 2022',
+                           expense: 1200),
+
+                     ],
+                   ),
+                )
+              ],
             )
 
           ],
@@ -142,3 +132,5 @@ class _StatisticState extends State<Statistic> {
     );
   }
 }
+
+
