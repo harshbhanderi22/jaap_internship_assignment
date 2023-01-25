@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jaap_internship_assignment/constant.dart';
 
-class TrendingExpense extends StatelessWidget {
+class TrendingExpense extends StatefulWidget {
 
   const TrendingExpense({super.key, required this.heading,required this.date, required this
       .expense});
@@ -11,9 +11,17 @@ class TrendingExpense extends StatelessWidget {
   final int expense;
 
   @override
+  State<TrendingExpense> createState() => _TrendingExpenseState();
+}
+
+class _TrendingExpenseState extends State<TrendingExpense> {
+
+
+  @override
   Widget build(BuildContext context) {
+
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children:  [
@@ -27,16 +35,16 @@ class TrendingExpense extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Text(heading, style: kTreadingHeading,),
+                   Text(widget.heading, style: kTreadingHeading,),
                     const SizedBox(height: 5,),
-                    Text(date,style: kTreadingDate,)
+                    Text(widget.date,style: kTreadingDate,)
                 ],
               ),
             ],
           ),
            Center(
             child: Text(
-                '-$expense',
+                '-${widget.expense}',
                 style: kTreadingExpense
             ),
           )
